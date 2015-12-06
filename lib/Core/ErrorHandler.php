@@ -17,7 +17,7 @@ class ErrorHandler
 
     public function handleError($errno, $errstr, $errfile, $errline)
     {
-        if ($errno & $this->error_reporting === 0) {
+        if (error_reporting() === 0 || $errno & $this->error_reporting === 0) {
             return false;
         }
 

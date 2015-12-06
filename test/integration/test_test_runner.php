@@ -214,7 +214,13 @@ describe('TestRunner', function ($ctx) {
                 expect($failures)->to->have->length(1);
                 expect($failures[0]->getBlock())->to->be->a('Matura\Blocks\Block');
             });
+        });
 
+        describe('Error Swallowing via @', function($ctx) {
+            it('should not capture @-swallowed errors', function($ctx) {
+                @(1/0);
+                expect(true)->to->equal(true);
+            });
         });
     });
 
